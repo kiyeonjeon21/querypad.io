@@ -70,6 +70,26 @@
   }
   .hero .sub strong { color: var(--ink); font-weight: 500; }
 
+  /* star CTA */
+  .cta { margin-top: 32px; }
+  .star-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--amber); border-radius: 8px;
+    padding: 11px 18px; color: var(--amber);
+    font-size: 14px; font-weight: 500; letter-spacing: 0.01em;
+    transition: background .18s ease, color .18s ease, transform .18s ease;
+  }
+  .star-btn:hover {
+    background: var(--amber); color: var(--bg);
+    text-decoration: none; transform: translateY(-1px);
+  }
+  .star-btn .star { font-size: 15px; }
+  .star-btn .gh-count {
+    margin-left: 2px; padding-left: 12px;
+    border-left: 1px solid currentColor;
+    font-variant-numeric: tabular-nums; opacity: 0.85;
+  }
+
   /* staggered load-in */
   .rise { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
   .d1 { animation-delay: .05s } .d2 { animation-delay: .15s } .d3 { animation-delay: .25s }
@@ -175,6 +195,12 @@
       <strong>first</strong>, then writes the SQL.
     </p>
 
+    <p class="cta rise d4">
+      <a class="star-btn" href="https://github.com/kiyeonjeon21/querypad">
+        <span class="star">★</span> Star on GitHub<span class="gh-count" id="star-count" hidden></span>
+      </a>
+    </p>
+
     <div class="term rise d4">
       <div class="term-bar"><i></i><i></i><i></i><span>querypad - zsh</span></div>
       <pre><span class="p">$</span> <span class="c">querypad inspect ./data</span>
@@ -251,6 +277,20 @@
     <span><a href="https://github.com/kiyeonjeon21/querypad">github.com/kiyeonjeon21/querypad</a></span>
   </footer>
 </div>
+
+<script>
+  // Live star count; on any failure the badge simply stays hidden.
+  fetch("https://api.github.com/repos/kiyeonjeon21/querypad")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((repo) => {
+      if (!repo || typeof repo.stargazers_count !== "number") return;
+      const n = repo.stargazers_count;
+      const el = document.getElementById("star-count");
+      el.textContent = n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : String(n);
+      el.hidden = false;
+    })
+    .catch(() => {});
+</script>
 
 </body>
 </html>
