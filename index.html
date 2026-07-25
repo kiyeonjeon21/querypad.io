@@ -9,9 +9,37 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,560;1,9..144,340&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0e0f">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f1e5">
 <style>
   :root {
     --bg: #0c0e0f;
+    --panel: #121516;
+    --line: #23282a;
+    --ink: #e9e4d8;
+    --dim: #8b9297;
+    --amber: #e8a63c;
+    --amber-soft: #f2c987;
+    --green: #9dbf8e;
+    --texture: rgba(255,255,255,0.012);
+  }
+  /* Light mode: warm paper + darker amber for contrast. The terminal and the
+     install block keep their own dark palette below - a terminal stays a terminal. */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f1e5;
+      --line: #ddd5c2;
+      --ink: #21231f;
+      --dim: #6d6f66;
+      --amber: #a3660f;
+      --amber-soft: #8a5a14;
+      --green: #48713c;
+      --texture: rgba(0,0,0,0.015);
+    }
+    .term { box-shadow: 0 24px 60px -30px rgba(76, 58, 18, 0.4); }
+  }
+  /* Scoped dark palette: identical in dark mode, keeps code panels dark in light mode. */
+  .term, .install pre {
     --panel: #121516;
     --line: #23282a;
     --ink: #e9e4d8;
@@ -31,7 +59,7 @@
     -webkit-font-smoothing: antialiased;
     /* faint scanline texture */
     background-image: repeating-linear-gradient(
-      0deg, transparent 0 2px, rgba(255,255,255,0.012) 2px 4px);
+      0deg, transparent 0 2px, var(--texture) 2px 4px);
   }
   a { color: var(--amber); text-decoration: none; }
   a:hover { text-decoration: underline; text-underline-offset: 3px; }
