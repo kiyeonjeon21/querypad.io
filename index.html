@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QueryPad - Cursor for Data</title>
+<title>QueryPad - Know your data before you query it</title>
 <meta name="description" content="A local-first AI CLI that understands your datasets - profiles files, discovers relationships, builds semantic models - before generating SQL with DuckDB.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0f10'/><text x='7' y='23' font-family='monospace' font-size='18' fill='%23e8a63c'>▸</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,9 +85,10 @@
   .hero h1 {
     font-family: "Fraunces", serif;
     font-weight: 340;
-    font-size: clamp(44px, 8vw, 84px);
-    line-height: 1.02;
+    font-size: clamp(38px, 6.2vw, 66px);
+    line-height: 1.08;
     letter-spacing: -0.015em;
+    max-width: 15ch;
   }
   .hero h1 em {
     font-style: italic;
@@ -214,8 +215,8 @@
   </header>
 
   <section class="hero">
-    <p class="kicker rise d1">local-first · terminal-first · duckdb-powered</p>
-    <h1 class="rise d2">Cursor <em>for</em> Data.</h1>
+    <p class="kicker rise d1">cursor for data · local-first · duckdb-powered</p>
+    <h1 class="rise d2">Know your data <em>before</em> you query it.</h1>
     <p class="sub rise d3">
       The execution layer is solved - DuckDB runs SQL brilliantly. The unsolved problem is that
       <strong>people don't understand their data</strong>: which tables exist, how they connect,
